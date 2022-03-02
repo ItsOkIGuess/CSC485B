@@ -1,7 +1,7 @@
 import pandas as pd
+#By Romney Duncan For CSC 485B
 
-
-	
+# Function That takes a dict and returns a sorted list
 def to_sorted_list(dict,metric):
 		ls = [[0],[0]]
 		i = 0
@@ -17,7 +17,8 @@ def to_sorted_list(dict,metric):
 				ls.append([dict[x][0],[dict][x][1],x])
 			i = 0
 		return ls
-	
+
+#Function that takes list data and returns with every possible tuple pair from the list
 def to_tuples(ls):
 	blacklist = []
 	tuplelist = []
@@ -32,6 +33,7 @@ def to_tuples(ls):
 	
 	return ls
 
+#Reading the data
 df = pd.read_csv (r'all_eggs_data.csv')
 df =  df.to_dict()
 ls1 = list(df["name"].values())
@@ -46,9 +48,8 @@ lw = {}
 n = {}
 hmm = []
 devcons = []
+#Putting sections of data into their unique categories
 for x in ls:
-	#print("STILL GOING")
-	
 	e = x[1].split(',')
 	if(len(e) == 1):
 		d = e[0]
@@ -77,22 +78,23 @@ for x in hmm:
 		pass
 	
 #print(devcons)	
-'''
+#Gathering information from the unique categories
 unique_connections = []
 for x in devcons:
 	temp = to_tuples(x)
 	if temp not in unique_connections:
 		unique_connections.append(temp)
 print(len(unique_connections))
-'''
+
 
 temp = []
 total_cons = 0
 for x in devcons:
 	total_cons = total_cons + len(x)
-#print(total_cons)
 
-#print(len(unique_connections) / len(lw))
+
+print(total_cons)
+print(len(unique_connections) / len(lw))
 
 solos = 0
 
@@ -107,7 +109,7 @@ for x in n:
 	if len(n[x][1]) == 1:
 		solos = solos + 1
 print(len(odf))
-'''
+
 oo = to_sorted_list(odf,0)
 ll = to_sorted_list(lw,0)
 nn = to_sorted_list(n,0)
@@ -147,5 +149,5 @@ for i in range(0,5):
 print
 
 print(len(oo))
-'''
+
 
